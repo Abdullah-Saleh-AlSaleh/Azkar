@@ -17,7 +17,7 @@ namespace AppTimers
     public partial class Form1 : Form
     {
         private static System.Timers.Timer aTimer;
-
+        public static int i=0;
         public Form1()
         {
             InitializeComponent();
@@ -245,7 +245,8 @@ namespace AppTimers
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            
+            label2.Text=i.ToString();
             // Hook up the Elapsed event for the timer.
 
             // Set the Interval to 2 seconds (2000 milliseconds).
@@ -370,11 +371,42 @@ namespace AppTimers
                 default:
                     break;
             }
+           int Minute = DateTime.Now.Minute;
+            if (Minute<= 12)
+            {
+                textBox2.Text = "لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءِ قَدِيرِ";
+            }
+            else if (Minute <= 24)
+            {
+                textBox2.Text = "سُبْحـانَ اللهِ وَبِحَمْـدِهِ";
+            }
+            else if (Minute <= 36)
+            {
+                textBox2.Text = "أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ";
+            }
+            else if (Minute <= 48)
+            {
+                textBox2.Text = "رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً وَبِمُحَـمَّدٍ صلى الله عليه وسلم نَبِيّـا";
+            }
+            else if (Minute <= 60)
+            {
+                textBox2.Text = "سُبْحـانَ اللهِ وَبِحَمْـدِهِ";
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void azkar_Click(object sender, EventArgs e)
+        {
+            i++;
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            i=0;    
         }
     }
 
