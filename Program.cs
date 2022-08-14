@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +17,9 @@ namespace AppTimers
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);   
-        
+            Application.SetCompatibleTextRenderingDefault(false);
+            RegistryKey registry = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\windows\\CurrentVersion\\Run", true);
+            registry.SetValue("Azkar", Application.ExecutablePath.ToString());
             HostFactory.Run(x =>
             {
                 x.Service<Heartbeat>(s =>
@@ -38,6 +40,7 @@ namespace AppTimers
 
             });
             Application.Run(new Form1());
+            
         }
     }
 }
